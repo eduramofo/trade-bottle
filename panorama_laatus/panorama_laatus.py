@@ -1,6 +1,6 @@
+import pandas as pd
 import time
 import json
-import pandas as pd
 
 from decouple import config
 from selenium import webdriver
@@ -10,8 +10,8 @@ from bs4 import BeautifulSoup
 
 
 def panorama_laatus():
-    data = get_data()
-    gerar_arquivo(data)
+    df = get_data()
+    return df
 
 
 def get_data():
@@ -80,7 +80,7 @@ def tabela_to_data(soup, htmlId):
             cells = row.find_all(['td', 'th'])
             row_data = [cell.get_text(strip=True) for cell in cells]
             table_data.append(row_data)
-    return table_data
+    return process_table(table_data)
 
 
 def clean_data(data):
@@ -96,3 +96,10 @@ def gerar_arquivo(data):
         json.dump(data, arquivo, ensure_ascii=False, indent=4)
     print(f"Arquivo '{nome_arquivo}' salvo com sucesso!")
 
+
+def process_table(data):
+    headers = data[0]
+    df = pd.DataFrame(data[1:], columns=headers)
+    df = df.iloc[:, :-2].join(df.iloc[:, -1])
+    df.columns = headers[:-2] + ["Data/Hora"]
+    return df

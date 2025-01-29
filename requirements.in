@@ -6,3 +6,7 @@ webdriver-manager
 openai
 python-decouple
 pandas
+schedule
+peewee
+psycopg2-binary
+peewee-migrate

@@ -14,14 +14,8 @@ pip install -r requirements-dev.txt
 ## 2. CMDs
 
 ```bash
-# Pega os dados
-python data.py
-
-# Limpa dos dados
-python clean.py 
-
-# Analise os dados
-python analyze.py
+# Robo pra pegar os dados e fazer análise
+python run.py
 
 # Server
 python server.py
