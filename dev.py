@@ -1,5 +1,5 @@
-from app.ia.ia import ia
+from app.ai import ai
 
 
 if __name__ == '__main__':
-    ia()
+    ai()

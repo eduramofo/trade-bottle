@@ -1,4 +1,5 @@
 from bottle import Bottle, static_file, template
+from app.models import Analysis
 
 
 app = Bottle()
@@ -7,9 +8,10 @@ app = Bottle()
 def index():
     context = {
         "title": "Painel de Tendência",
-        "items": ["Item 1", "Item 2", "Item 3"]
+        "analysis_list": Analysis.select().order_by(Analysis.created_on.desc()).limit(5)
     }
     return template('templates/index.html', **context)
+
 
 @app.route('/static/<filepath:path>')
 def serve_static(filepath):

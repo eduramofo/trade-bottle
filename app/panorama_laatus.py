@@ -59,6 +59,7 @@ def get_data():
         soup = BeautifulSoup(driver.page_source, "html.parser")
         data['titulos'] = tabela_to_data(soup, 'card-6')
         data['principais'] = tabela_to_data(soup, 'card-10')
+        data['nasdaq'] = tabela_to_data(soup, 'card-13')
 
         print("Conteúdo capturado com sucesso!")
     else:

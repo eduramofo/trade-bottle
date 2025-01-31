@@ -1,7 +1,7 @@
 import schedule
 import time
 from app.data import get_data
-from app.ia.ia import ia
+from app.ai import ai
 
 
 def task_1min():
@@ -9,7 +9,7 @@ def task_1min():
 
 
 def task_5min():
-    ia()
+    ai()
 
 schedule.every(1).minute.do(task_1min)
 schedule.every(5).minutes.do(task_5min)

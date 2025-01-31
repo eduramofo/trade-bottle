@@ -13,8 +13,9 @@ class History(Model):
         database = db
 
 
-if __name__ == "__main__":
-    db.connect()
-    db.create_tables([History])
-    print("Tabela History criada com sucesso!")
-    db.close()
+class Analysis(Model):
+    created_on = DateTimeField(default=datetime.now)
+    content = TextField()
+
+    class Meta:
+        database = db
